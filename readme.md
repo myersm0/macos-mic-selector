@@ -10,7 +10,7 @@ swiftc AudioDeviceManager.swift main.swift -o set_mic
 ```
 
 ## Usage
-Replace the two input arguments according to the actual names of the mics that you want to use:
+You can specify a primary device that you want to use, and a fallback device in the event that mic is not available. For example, I always want to use my Samson Q9U if it's plugged in, or otherwise my laptop's builtin mic:
 ```
 set_mic "Samson Q9U" "MacBook Pro Microphone"
 ```
@@ -19,8 +19,4 @@ Or if you only have one device that you want to use, without a fallback:
 ```
 set_mic "MacBook Pro Microphone"
 ```
-
-
-
-
 
