@@ -4,7 +4,7 @@ On Mac OS, this allows you to set your audio input device from the command line.
 Useful in the event of a bluetooth device that likes to become the active audio input device by default every time it connects to your Mac, like AirPods. This way you can automate overriding that behavior.
 
 ## Installation
-From the command line:
+`xtools` must fist be installed from the AppStore. Then, from the command line:
 ```
 swiftc AudioDeviceManager.swift main.swift -o set_mic
 ```
