@@ -1,12 +1,14 @@
 import Foundation
 
-guard CommandLine.arguments.count == 3 else {
-    print("Usage: \(CommandLine.arguments[0]) <PrimaryDeviceName> <FallbackDeviceName>")
+let arguments = CommandLine.arguments
+
+if arguments.count < 2 || arguments.count > 3 {
+    print("Usage: ./setAudioDevice <primary_device_name> [<fallback_device_name>]")
     exit(1)
 }
 
-let primaryDevice = CommandLine.arguments[1]
-let fallbackDevice = CommandLine.arguments[2]
+let primaryDevice = arguments[1]
+let fallbackDevice = arguments.count == 3 ? arguments[2] : primaryDevice
 
 setAudioInputDevice(primaryDevice: primaryDevice, fallbackDevice: fallbackDevice)
 
