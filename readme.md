@@ -15,6 +15,11 @@ Replace the two input arguments according to the actual names of the mics that y
 set_mic_defaults "Samson Q9U" "MacBook Pro Microphone"
 ```
 
+Or if you only have one device that you want to use, without a fallback:
+```
+set_mic_defaults "MacBook Pro Microphone"
+```
+
 
 
 
