@@ -4,7 +4,7 @@ On Mac OS, this allows you to set your audio input device from the command line.
 Useful in the event of a bluetooth device that likes to become the active audio input device by default every time it connects to your Mac, like AirPods. This way you can automate overriding that behavior.
 
 ## Installation
-`xtools` must fist be installed from the AppStore. Then, from the command line:
+`xtools` must first be installed from the AppStore. Then, from the command line:
 ```
 git clone https://github.com/myersm0/macos-mic-selector
 cd macos-mic-selector
