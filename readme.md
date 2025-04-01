@@ -22,3 +22,7 @@ Or if you only have one device that you want to use, without a fallback:
 set_mic "MacBook Pro Microphone"
 ```
 
+Update April 1, 2025:  You can now supply not just two but an arbitrarily long list of microphones, of which the first available one will be used.
+```
+set_mic "my favorite mic" "my second favorite mic" "yet another mic" "etc"
+```
