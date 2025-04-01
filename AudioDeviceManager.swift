@@ -1,7 +1,7 @@
 import CoreAudio
 import AudioToolbox
 
-func setAudioInputDevice(primaryDevice: String, fallbackDevice: String) {
+func setAudioInputDevice(preferredDevices: [String]) {
     var address = AudioObjectPropertyAddress(
         mSelector: kAudioHardwarePropertyDevices,
         mScope: kAudioObjectPropertyScopeGlobal,
@@ -62,27 +62,24 @@ func setAudioInputDevice(primaryDevice: String, fallbackDevice: String) {
             
             if result == noErr,
                let deviceNameCFString = deviceNameCFString,
-               (deviceNameCFString as String) == deviceName {
+               (deviceNameCFString as String).caseInsensitiveCompare(deviceName) == .orderedSame {
                 return deviceID
             }
         }
         return nil
     }
     
-    if let primaryDeviceID = findDevice(named: primaryDevice) {
-        setDefaultInputDevice(to: primaryDeviceID)
-        print("Set input device to \(primaryDevice)")
-        return
+    for device in preferredDevices {
+        if let deviceID = findDevice(named: device) {
+            setDefaultInputDevice(to: deviceID)
+            print("Set input device to \(device)")
+            return
+        }
     }
     
-    if let fallbackDeviceID = findDevice(named: fallbackDevice) {
-        setDefaultInputDevice(to: fallbackDeviceID)
-        print("Set input device to \(fallbackDevice)")
-        return
-    }
-    
-    print("Neither \(primaryDevice) nor \(fallbackDevice) were found.")
+    print("None of the specified devices were found: \(preferredDevices.joined(separator: ", "))")
 }
+
 
 func setDefaultInputDevice(to deviceID: AudioObjectID) {
     var inputAddress = AudioObjectPropertyAddress(
